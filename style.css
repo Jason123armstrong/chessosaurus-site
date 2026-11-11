@@ -46,13 +46,13 @@ a:hover { color: var(--orange); }
 .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 800; font-size: 22px; letter-spacing: .2px; }
 .brand img { width: 40px; height: 40px; border-radius: 10px; }
 .brand:hover { color: #fff; }
-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; flex-wrap: wrap; }
-nav a {
+nav.main-nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav.main-nav a {
   display: block; color: #fff; text-decoration: none; font-weight: 700; font-size: 16px;
   padding: 8px 14px; border-radius: 999px;
 }
-nav a:hover { background: rgba(255, 255, 255, .14); color: #fff; }
-nav a[aria-current="page"] { background: var(--orange); }
+nav.main-nav a:hover { background: rgba(255, 255, 255, .14); color: #fff; }
+nav.main-nav a[aria-current="page"] { background: var(--orange); }
 
 /* Hero */
 .hero {
@@ -65,7 +65,7 @@ nav a[aria-current="page"] { background: var(--orange); }
 .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
 .hero h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; margin: 0 0 8px; color: var(--green); font-weight: 900; }
 .tagline { font-size: clamp(20px, 2.6vw, 26px); font-weight: 800; color: var(--orange-dark); margin: 0 0 16px; }
-.lead { font-size: 20px; color: var(--muted); max-width: 34ch; margin: 0 0 24px; }
+.lead { font-size: 20px; color: var(--muted); max-width: 40ch; margin: 0 0 24px; }
 .hero-art { justify-self: center; position: relative; }
 .hero-art img { width: min(380px, 80vw); border-radius: 48px; box-shadow: var(--shadow); transform: rotate(-3deg); }
 .badges { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
@@ -145,6 +145,7 @@ section.alt .card { background: var(--cream); }
 }
 .toc { background: var(--paper); border: 2px solid var(--line); border-radius: 18px; padding: 16px 22px; margin: 0 0 8px; }
 .toc ol { margin: 6px 0 0; padding-left: 22px; }
+.toc a { color: var(--orange-dark); font-weight: 700; }
 table { border-collapse: collapse; width: 100%; margin: 16px 0; background: var(--paper); border-radius: 12px; overflow: hidden; font-size: 16px; }
 th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { background: #eef3e6; color: var(--green); }
@@ -169,7 +170,7 @@ details p { margin: 10px 0 0; color: var(--muted); }
   body { font-size: 17px; }
   .cards { grid-template-columns: 1fr; }
   .site-head .wrap { justify-content: center; }
-  nav a { padding: 6px 10px; font-size: 15px; }
+  nav.main-nav a { padding: 6px 10px; font-size: 15px; }
   .promise { padding: 24px; }
 }
 @media (prefers-reduced-motion: no-preference) {
