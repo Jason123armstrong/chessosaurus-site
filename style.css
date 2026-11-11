@@ -153,6 +153,27 @@ details { background: var(--paper); border: 2px solid var(--line); border-radius
 summary { font-weight: 800; cursor: pointer; }
 details p { margin: 10px 0 0; color: var(--muted); }
 
+/* Price banner (owner, 11 Nov 2026: "make it really standout") */
+.price-flash {
+  display: inline-block; margin: 0 0 24px; padding: 14px 22px; border-radius: 18px;
+  background: linear-gradient(135deg, #ffd34d, #ffb21f); color: #3a2200; font-weight: 900; font-size: 20px; line-height: 1.35;
+  border: 3px solid #e08a00; box-shadow: 0 8px 0 #c26f00, 0 14px 30px rgba(194, 111, 0, .35); transform: rotate(-1deg);
+}
+.price-flash strong { color: #a83f12; }
+@media (prefers-reduced-motion: no-preference) {
+  .price-flash { animation: wiggle 3.2s ease-in-out infinite; }
+  @keyframes wiggle { 0%, 88%, 100% { transform: rotate(-1deg) scale(1); } 92% { transform: rotate(1deg) scale(1.04); } 96% { transform: rotate(-2deg) scale(1.04); } }
+}
+
+/* 3D clip */
+.feature-video { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 40px; align-items: center; }
+.video-frame { position: relative; border-radius: 28px; overflow: hidden; border: 6px solid var(--ink); box-shadow: var(--shadow); background: #9bd3ee; }
+.video-frame video { display: block; width: 100%; height: auto; }
+.video-toggle {
+  position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0;
+  background: rgba(42, 33, 24, .75); color: #fff; font-size: 16px; cursor: pointer;
+}
+
 /* Two languages */
 .two-lang { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 380px); gap: 32px; justify-content: center; align-items: start; }
 .phone-shot { margin: 0; }
@@ -199,6 +220,7 @@ details p { margin: 10px 0 0; color: var(--muted); }
 .site-foot ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; flex-wrap: wrap; }
 
 @media (max-width: 860px) {
+  .feature-video { grid-template-columns: minmax(0, 420px); justify-content: center; }
   .two-lang { grid-template-columns: minmax(0, 360px); }
   .hero .wrap, .promise { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; text-align: center; }

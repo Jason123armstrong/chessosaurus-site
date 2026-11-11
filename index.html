@@ -37,7 +37,8 @@
       <div>
         <h1>Chessosaurus</h1>
         <p class="tagline">Same great moves. A wilder world!</p>
-        <p class="lead">Chess, languages, maths, science and memory, all in one dino-sized adventure. Children learn every chess move with a friendly dinosaur, pick up words in 12 languages, sharpen their maths and collect stars along the Dino trail. Clever fun that grows with them, with no ads, no chat and no screen-time traps, all for one very affordable price with no subscriptions and no renewal costs.</p>
+        <p class="lead">Chess, languages, maths, science and memory, all in one dino-sized adventure. Children learn every chess move with a friendly dinosaur, pick up words in 12 languages, sharpen their maths and collect stars along the Dino trail. Clever fun that grows with them, with no ads, no chat and no screen-time traps.</p>
+        <p class="price-flash"><span aria-hidden="true">⭐</span> All for one very affordable price, with <strong>no subscriptions</strong> and <strong>no renewal costs</strong></p>
         <div class="badges">
           <span class="soon" aria-label="Coming soon on Google Play">▶<span>Coming soon<small>on Google Play for Android</small></span></span>
           <span class="pill">No ads</span>
@@ -61,6 +62,20 @@
         <div class="card"><span class="emoji" aria-hidden="true">🧩</span><h3>Dino games</h3><p>Languages, maths, science, memory and chess-skill games. No timers and no rush: every round earns stars.</p></div>
         <div class="card"><span class="emoji" aria-hidden="true">🧊</span><h3>2D or 3D</h3><p>A flat board, or a 3D one you can turn and zoom. Save a favourite angle for each set of pieces.</p></div>
         <div class="card"><span class="emoji" aria-hidden="true">👫</span><h3>Play a friend</h3><p>Two players on one phone or tablet, or on two devices side by side, paired by a grown-up with a code.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="move-title">
+    <div class="wrap feature-video">
+      <div class="video-frame">
+        <video src="video/board-3d.mp4" poster="video/board-3d-poster.jpg" width="720" height="720" autoplay muted loop playsinline preload="metadata" aria-label="The 3D board being turned all the way round, then tilted, with the royal dinosaur pieces" data-motion></video>
+        <button class="video-toggle" type="button" data-video-toggle aria-label="Pause the video">❚❚</button>
+      </div>
+      <div>
+        <h2 id="move-title">Turn the board in 3D</h2>
+        <p class="intro">Drag to spin the board right round, tilt it, pinch to zoom. The royal dinosaurs stand tall on their squares, and you can save a favourite angle for each set of pieces. One tap brings it back.</p>
+        <p class="intro">Prefer it flat? The 2D board is always one tap away.</p>
       </div>
     </div>
   </section>
@@ -177,6 +192,15 @@
   </div>
 </footer>
 <script>
+// The 3D clip: still for people who ask their device to reduce motion; a pause button for everyone.
+(function () {
+  var v = document.querySelector("[data-motion]"), b = document.querySelector("[data-video-toggle]");
+  if (!v || !b) return;
+  var show = function () { var p = v.paused; b.textContent = p ? "▶" : "❚❚"; b.setAttribute("aria-label", p ? "Play the video" : "Pause the video"); };
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); }
+  b.addEventListener("click", function () { if (v.paused) v.play(); else v.pause(); });
+  v.addEventListener("play", show); v.addEventListener("pause", show); show();
+})();
 // Share: the phone's own share sheet where there is one, and a copy-link button. Nothing is sent anywhere by this page.
 (function () {
   var url = "https://www.chessosaurus.com/";
