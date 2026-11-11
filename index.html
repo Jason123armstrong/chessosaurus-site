@@ -97,6 +97,47 @@
     </div>
   </section>
 
+  <section aria-labelledby="clips-title">
+    <div class="wrap">
+      <h2 id="clips-title">See it in action</h2>
+      <p class="intro">Short clips recorded on a phone, each under 20 seconds and silent. They play as you scroll to them; tap a clip to pause it.</p>
+      <div class="clips">
+        <figure class="clip">
+          <video src="video/clip-chess.mp4" poster="video/clip-chess.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Real chess, with dinosaurs: Four opening moves against the Baby dino, castling included. Every piece is a dinosaur, and the moves are real chess."></video>
+          <figcaption><strong>Real chess, with dinosaurs</strong>Four opening moves against the Baby dino, castling included. Every piece is a dinosaur, and the moves are real chess.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-ending.mp4" poster="video/clip-ending.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Winning, and learning from it: Checkmate! A celebration, a card that explains how the game ended, and one tip from the game to try next time."></video>
+          <figcaption><strong>Winning, and learning from it</strong>Checkmate! A celebration, a card that explains how the game ended, and one tip from the game to try next time.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-tutorial.mp4" poster="video/clip-tutorial.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Lessons that show the way: “Tap every square the knight can jump to.” Each lesson shows the moves, and says well done in both languages."></video>
+          <figcaption><strong>Lessons that show the way</strong>“Tap every square the knight can jump to.” Each lesson shows the moves, and says well done in both languages.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-two-languages.mp4" poster="video/clip-two-languages.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Two languages at once: A quiz question in English and German, with a speak button for each, then the answer and a fun fact in both."></video>
+          <figcaption><strong>Two languages at once</strong>A quiz question in English and German, with a speak button for each, then the answer and a fun fact in both.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-settings.mp4" poster="video/clip-settings.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Settings, with a grown-up check: Each settings tab, then the grown-up check (hold a button, answer a sum) before the For grown-ups page opens."></video>
+          <figcaption><strong>Settings, with a grown-up check</strong>Each settings tab, then the grown-up check (hold a button, answer a sum) before the For grown-ups page opens.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-safety.mp4" poster="video/clip-safety.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Safe by design: No adverts, and anything that leaves the app, such as sharing, waits for a grown-up."></video>
+          <figcaption><strong>Safe by design</strong>No adverts, and anything that leaves the app, such as sharing, waits for a grown-up.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-trail.mp4" poster="video/clip-trail.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="The Dino trail: A path of stops to follow: learn a piece, play with it, collect stars, unlock the next dinosaur."></video>
+          <figcaption><strong>The Dino trail</strong>A path of stops to follow: learn a piece, play with it, collect stars, unlock the next dinosaur.</figcaption>
+        </figure>
+        <figure class="clip">
+          <video src="video/clip-games.mp4" poster="video/clip-games.jpg" width="540" height="1170" muted loop playsinline preload="none" data-clip aria-label="Dino games: Languages, maths, science, memory and chess skills, with no timers. Here: colours in German."></video>
+          <figcaption><strong>Dino games</strong>Languages, maths, science, memory and chess skills, with no timers. Here: colours in German.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section aria-labelledby="ladder-title">
     <div class="wrap">
       <h2 id="ladder-title">Seven dinosaurs to beat</h2>
@@ -200,6 +241,23 @@
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); }
   b.addEventListener("click", function () { if (v.paused) v.play(); else v.pause(); });
   v.addEventListener("play", show); v.addEventListener("pause", show); show();
+})();
+// Clips play only while on screen (saves data), stay still for reduced motion, and pause or play on a tap.
+(function () {
+  var clips = document.querySelectorAll("[data-clip]");
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  clips.forEach(function (v) {
+    v.addEventListener("click", function () { if (v.paused) { v.play(); v.dataset.user = ""; } else { v.pause(); v.dataset.user = "paused"; } });
+  });
+  if (still || !("IntersectionObserver" in window)) { clips.forEach(function (v) { v.controls = true; }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting && v.dataset.user !== "paused") { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (!e.isIntersecting) v.pause();
+    });
+  }, { threshold: 0.4 });
+  clips.forEach(function (v) { io.observe(v); });
 })();
 // Share: the phone's own share sheet where there is one, and a copy-link button. Nothing is sent anywhere by this page.
 (function () {
