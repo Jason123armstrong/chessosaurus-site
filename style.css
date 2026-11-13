@@ -249,13 +249,13 @@ details p { margin: 10px 0 0; color: var(--muted); }
   @keyframes bob { 0%, 100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-10px); } }
 }
 
-/* Justified paragraphs on wider screens (owner, 11 Nov 2026); left-aligned on phones, where justified text leaves gaps. */
+/* Words are never split across lines (owner, 13 Nov 2026: "con-trols"). Justified paragraphs on wider screens (owner, 11 Nov 2026); left-aligned on phones, where justified text leaves gaps. */
 @media (min-width: 561px) {
-  .prose p, .prose li, .intro, .card p, .promise p, .phone-shot figcaption, details p, .page-head p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .prose p, .prose li, .intro, .card p, .promise p, .phone-shot figcaption, details p, .page-head p { text-align: justify; hyphens: manual; -webkit-hyphens: manual; }
   .share-wrap .intro { text-align: center; }
 }
 @media (min-width: 861px) {
-  .hero .lead { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .hero .lead { text-align: justify; hyphens: manual; -webkit-hyphens: manual; }
 }
 
 /* Landing page, Nov 2026: one picture beside each message, in one frame */
