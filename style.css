@@ -295,3 +295,9 @@ details p { margin: 10px 0 0; color: var(--muted); }
 .steps { display: inline-flex; gap: 4px; }
 .steps i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--green-mid); background: transparent; }
 .steps i.on { background: var(--green-mid); }
+
+/* Phones and narrow screens: the dinosaur comes first, above the heading (owner, 13 Nov 2026) */
+@media (max-width: 860px) {
+  .hero-art { order: -1; }
+  .hero-art img { width: min(240px, 60vw); }
+}
