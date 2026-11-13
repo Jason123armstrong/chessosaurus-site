@@ -309,3 +309,7 @@ details p { margin: 10px 0 0; color: var(--muted); }
 
 /* The seven levels show the game's own characters (owner, 13 Nov 2026) */
 .level-art { display: block; width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; object-fit: cover; background: #fff; border: 3px solid var(--green); box-shadow: var(--shadow); }
+
+/* The second line of the headline: older players */
+.hero .tagline { font-size: clamp(1.05rem, 2.2vw, 1.35rem); line-height: 1.35; margin: .2rem 0 1rem; max-width: 34ch; }
+@media (max-width: 860px) { .hero .tagline { margin-inline: auto; } }
