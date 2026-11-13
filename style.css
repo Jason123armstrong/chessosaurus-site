@@ -277,3 +277,21 @@ details p { margin: 10px 0 0; color: var(--muted); }
   .feature.flip .feature-text { order: 0; }
   .frame { max-width: 240px; }
 }
+
+/* The character back in the hero: its own rounded corners are followed, so no white shows round it */
+.hero-art img { width: min(360px, 72vw); height: auto; border-radius: 23%; box-shadow: var(--shadow); transform: rotate(-3deg); }
+/* Two phones side by side under one heading */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: clamp(1rem, 5vw, 4rem); justify-content: center; }
+.pair .frame { margin: 0; max-width: none; }
+
+/* Seven dinosaurs to beat: an egg with the level's number, and steps that fill as the levels rise */
+.levels { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+.level { background: var(--cream); border: 2px solid var(--line); border-radius: var(--radius); padding: 18px; text-align: center; }
+.level h3 { margin: 10px 0 0; }
+.level p { margin: 8px 0 0; color: var(--muted); font-size: 16px; }
+.level .level-word { margin: 2px 0 8px; font-weight: 800; color: var(--orange-dark); }
+.egg { display: inline-grid; place-items: center; width: 64px; height: 80px; background: radial-gradient(circle at 35% 30%, #fffdf7, #f1e4c6 70%); border: 3px solid var(--green); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; box-shadow: var(--shadow); }
+.egg b { font-size: 28px; color: var(--green); font-weight: 900; }
+.steps { display: inline-flex; gap: 4px; }
+.steps i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--green-mid); background: transparent; }
+.steps i.on { background: var(--green-mid); }
