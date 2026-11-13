@@ -306,3 +306,6 @@ details p { margin: 10px 0 0; color: var(--muted); }
 .level .suits { margin: 0 0 12px; font-size: 13px; font-weight: 800; letter-spacing: .02em; color: var(--green); background: #e4eedc; border-radius: 999px; padding: 4px 10px; display: inline-block; }
 .level.grown { border-color: var(--orange); }
 .level.grown .suits { color: #fff; background: var(--orange-dark); }
+
+/* The seven levels show the game's own characters (owner, 13 Nov 2026) */
+.level-art { display: block; width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; object-fit: cover; background: #fff; border: 3px solid var(--green); box-shadow: var(--shadow); }
