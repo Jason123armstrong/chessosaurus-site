@@ -397,3 +397,4 @@ ul.share { list-style: none; margin: 0; padding: 0; }
 .not-found { min-height: 70vh; text-align: center; }
 .not-found img { margin: 0 auto 16px; border-radius: 32px; }
 .not-found p, .not-found .page-head p { margin: 0 auto 24px; text-align: center !important; }
+.price-other { margin: -12px 0 20px; font-size: 15px; color: var(--muted); }
